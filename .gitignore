@@ -62,3 +62,11 @@ typings/
 
 # Cache used by TypeScript's incremental build
 *.tsbuildinfo
+
+.dockerignore
+.eslintignore
+.eslintrc.js
+.npmrc
+.prettierignore
+.prettierrc
+.yo-rc.json
