@@ -5,7 +5,7 @@ const NouveauModulePV = () => {
   return (
     <div className="container">
       <br />
-      <Link to="/enseignants" className="btn grey">
+      <Link to="/modules" className="btn grey">
         Retour
       </Link>
       <h1 className="grey-text">Nouveau Module</h1>

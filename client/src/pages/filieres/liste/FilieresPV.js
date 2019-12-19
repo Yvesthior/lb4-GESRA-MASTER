@@ -1,19 +1,19 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const ModulesPV = () => {
+const FilieresPV = () => {
   return (
     <div className="col s12">
       <div className="row linecenter">
         <div className="col s8">
-          <h3 className="grey-text text-left add"> Liste des Modules</h3>
+          <h3 className="grey-text text-left add"> Liste des Filières</h3>
         </div>
         <div className="col s4">
           <Link
-            to="/modules/add"
+            to="/filieres/add"
             class="waves-effect waves-light btn-large left blue"
           >
-            Ajouter un Module
+            Ajouter une Filière
           </Link>
         </div>
       </div>
@@ -29,10 +29,12 @@ const ModulesPV = () => {
 
         <tbody>
           <tr>
-            <td>PHP</td>
-            <td>PHP</td>
+            <td>LPTI 1</td>
             <td>
-              <Link to="/modules/id">
+              Licence Professionnelle en Télécommunications et Informatique
+            </td>
+            <td>
+              <Link to="/filieres/id">
                 <div
                   style={{marginRight: 3}}
                   className=" waves-effects waves-light btn-small green"
@@ -46,27 +48,12 @@ const ModulesPV = () => {
             </td>
           </tr>
           <tr>
-            <td>Javascript</td>
-            <td>Javascript</td>
+            <td>LIPMEN 1</td>
             <td>
-              <Link to="/modules/id">
-                <div
-                  style={{marginRight: 3}}
-                  className=" waves-effects waves-light btn-small green"
-                >
-                  <i class="fas fa-edit"></i> Modifier
-                </div>
-              </Link>
-              <div className=" waves-effects waves-light btn-small red">
-                <i className="fas fa-trash-alt"></i> Supprimer
-              </div>
+              Licence Professionnelle en Management et Économie du Numérique
             </td>
-          </tr>
-          <tr>
-            <td>PO</td>
-            <td>Physique des Ondes Electromagnétiques</td>
             <td>
-              <Link to="/modules/id">
+              <Link to="/filieres/id">
                 <div
                   style={{marginRight: 3}}
                   className=" waves-effects waves-light btn-small green"
@@ -83,7 +70,7 @@ const ModulesPV = () => {
       </table>
 
       <div className="fixed-action-btn">
-        <Link to="/modules/add" className="btn-floating btn-large blue">
+        <Link to="/filieres/add" className="btn-floating btn-large blue">
           <i className="fa fa-plus"></i>
         </Link>
       </div>
@@ -91,4 +78,4 @@ const ModulesPV = () => {
   );
 };
 
-export default ModulesPV;
+export default FilieresPV;

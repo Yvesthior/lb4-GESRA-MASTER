@@ -6,14 +6,14 @@ const ModulesPV = () => {
     <div className="col s12">
       <div className="row linecenter">
         <div className="col s8">
-          <h3 className="grey-text text-left add"> Liste des Modules</h3>
+          <h3 className="grey-text text-left add"> Liste des Départements</h3>
         </div>
         <div className="col s4">
           <Link
-            to="/modules/add"
+            to="/departements/add"
             class="waves-effect waves-light btn-large left blue"
           >
-            Ajouter un Module
+            Ajouter un Département
           </Link>
         </div>
       </div>
@@ -29,10 +29,10 @@ const ModulesPV = () => {
 
         <tbody>
           <tr>
-            <td>PHP</td>
-            <td>PHP</td>
+            <td>ESMTIC</td>
+            <td>ESMT Technologies de L'Information et de la Communication</td>
             <td>
-              <Link to="/modules/id">
+              <Link to="/departements/id">
                 <div
                   style={{marginRight: 3}}
                   className=" waves-effects waves-light btn-small green"
@@ -46,27 +46,10 @@ const ModulesPV = () => {
             </td>
           </tr>
           <tr>
-            <td>Javascript</td>
-            <td>Javascript</td>
+            <td>ESMT Management</td>
+            <td>ESMT Management</td>
             <td>
-              <Link to="/modules/id">
-                <div
-                  style={{marginRight: 3}}
-                  className=" waves-effects waves-light btn-small green"
-                >
-                  <i class="fas fa-edit"></i> Modifier
-                </div>
-              </Link>
-              <div className=" waves-effects waves-light btn-small red">
-                <i className="fas fa-trash-alt"></i> Supprimer
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>PO</td>
-            <td>Physique des Ondes Electromagnétiques</td>
-            <td>
-              <Link to="/modules/id">
+              <Link to="/departements/id">
                 <div
                   style={{marginRight: 3}}
                   className=" waves-effects waves-light btn-small green"
@@ -83,7 +66,7 @@ const ModulesPV = () => {
       </table>
 
       <div className="fixed-action-btn">
-        <Link to="/modules/add" className="btn-floating btn-large blue">
+        <Link to="/departements/add" className="btn-floating btn-large blue">
           <i className="fa fa-plus"></i>
         </Link>
       </div>
