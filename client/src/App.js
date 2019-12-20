@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Login from './pages/login/LoginPV.js';
+import Login from './pages/login/LoginPC.js';
 import Profils from './pages/profils/liste/ProfilsPC';
 import NouveauProfil from './pages/profils/ajout/NouveauProfilPC';
 import Modules from './pages/modules/liste/ModulesPC';

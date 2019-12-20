@@ -31,18 +31,28 @@ class Navbar extends Component {
 
         <ul className="sidenav" id="main-menu">
           <li>
-            <Link to="/">
-              <i className="fa fa-users"></i> Meetups
+            <Link to="/modules">
+              <i className="fa fa-users"></i> Modules
             </Link>
           </li>
           <li>
-            <Link to="/meetups/add">
-              <i className="fa fa-plus"></i> Add Meetup
+            <Link to="/departements">
+              <i className="fa fa-plus"></i> Departements
             </Link>
           </li>
           <li>
-            <Link to="/about">
-              <i className="fa fa-question-circle"></i> About
+            <Link to="/filieres">
+              <i className="fa fa-question-circle"></i> Filiéres
+            </Link>
+          </li>
+          <li>
+            <Link to="/typeactivites">
+              <i className="fa fa-question-circle"></i> Types d'Activité
+            </Link>
+          </li>
+          <li>
+            <Link to="/reglages">
+              <i className="fa fa-question-circle"></i> Réglages
             </Link>
           </li>
         </ul>
