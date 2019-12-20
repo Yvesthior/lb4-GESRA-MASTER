@@ -13,6 +13,10 @@ import ModifierDepartement from './pages/departements/modifier/ModifierDeparteme
 import Filieres from './pages/filieres/liste/FilieresPC';
 import NouvelleFiliere from './pages/filieres/ajout/NouvelleFilierePC';
 import ModifierFiliere from './pages/filieres/modifier/ModifierFilierePC';
+import TypesActivites from './pages/typesactivites/liste/TypesActivitesPC';
+import NouveauTypeActivite from './pages/typesactivites/ajout/NouveauTypeActivitePC';
+import ModifierTypeActivite from './pages/typesactivites/modifier/ModifierTypeActivitePC';
+import Reglages from './pages/reglages/ReglagesPC';
 
 function App() {
   return (
@@ -41,8 +45,19 @@ function App() {
             <Route exact path="/filieres" component={Filieres} />
             <Route exact path="/filieres/add" component={NouvelleFiliere} />
             <Route exact path="/filieres/:id" component={ModifierFiliere} />
+            <Route exact path="/typesactivites/" component={TypesActivites} />
+            <Route
+              exact
+              path="/typesactivites/add"
+              component={NouveauTypeActivite}
+            />
+            <Route
+              exact
+              path="/typesactivites/:id"
+              component={ModifierTypeActivite}
+            />
 
-            {/* <Route exact path="/rapports" component={Rapports} /> */}
+            <Route exact path="/reglages" component={Reglages} />
           </Switch>
         </section>
       </Fragment>

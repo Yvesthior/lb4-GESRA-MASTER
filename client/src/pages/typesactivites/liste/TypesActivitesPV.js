@@ -1,19 +1,22 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const ModulesPV = () => {
+const TypesActivitesPV = () => {
   return (
     <div className="col s12">
       <div className="row linecenter">
         <div className="col s8">
-          <h3 className="grey-text text-left add"> Liste des Départements</h3>
+          <h3 className="grey-text text-left add">
+            {' '}
+            Liste des Types D'activité
+          </h3>
         </div>
         <div className="col s4">
           <Link
-            to="/departements/add"
+            to="/typesactivites/add"
             class="waves-effect waves-light btn-large left blue"
           >
-            Ajouter un Département
+            Ajouter un Type D'Activité
           </Link>
         </div>
       </div>
@@ -22,17 +25,15 @@ const ModulesPV = () => {
         <thead>
           <tr>
             <th>Nom</th>
-            <th>Description</th>
             <th>Action</th>
           </tr>
         </thead>
 
         <tbody>
           <tr>
-            <td>ESMTIC</td>
-            <td>ESMT Technologies de L'Information et de la Communication</td>
+            <td>Formation Initiale</td>
             <td>
-              <Link to="/departements/id">
+              <Link to="/typesactivites/id">
                 <div
                   style={{marginRight: 3}}
                   className=" waves-effects waves-light btn-small green"
@@ -46,10 +47,9 @@ const ModulesPV = () => {
             </td>
           </tr>
           <tr>
-            <td>ESMT Management</td>
-            <td>ESMT Management</td>
+            <td>Cours du Soir</td>
             <td>
-              <Link to="/departements/id">
+              <Link to="/typesactivites/id">
                 <div
                   style={{marginRight: 3}}
                   className=" waves-effects waves-light btn-small green"
@@ -66,7 +66,7 @@ const ModulesPV = () => {
       </table>
 
       <div className="fixed-action-btn">
-        <Link to="/departements/add" className="btn-floating btn-large blue">
+        <Link to="/typesactivites/add" className="btn-floating btn-large blue">
           <i className="fa fa-plus"></i>
         </Link>
       </div>
@@ -74,4 +74,4 @@ const ModulesPV = () => {
   );
 };
 
-export default ModulesPV;
+export default TypesActivitesPV;

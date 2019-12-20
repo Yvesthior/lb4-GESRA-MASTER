@@ -1,23 +1,24 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const ModifierDepartementPV = () => {
+const ModifierDepartementPV = ({item, submit}) => {
   return (
     <div className="container">
       <br />
       <Link to="/departements" className="btn grey">
         Retour
       </Link>
-      <h2 className="grey-text">Département ESMTIC</h2>
-      <form className="col s12 m12 lg12">
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="name" type="text" class="validate" />
-            <label for="name">Nom</label>
-          </div>
-          <div class="input-field col s12">
-            <input id="description" type="text" class="validate" />
-            <label for="description">Description</label>
+      <h2 className="grey-text">Département {item.name}</h2>
+      <form onSubmit={submit} className="col s12 m12 lg12">
+        <div className="row">
+          <div className="input-field col s12">
+            <input
+              id="name"
+              type="text"
+              className="validate"
+              defaultValue={item.name}
+            />
+            <label htmlFor="name">Département</label>
           </div>
           <div className="row">
             <input

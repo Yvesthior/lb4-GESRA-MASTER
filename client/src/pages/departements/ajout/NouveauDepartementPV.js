@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const NouveauDepartementPV = () => {
+const NouveauDepartementPV = props => {
   return (
     <div className="container">
       <br />
@@ -9,15 +9,11 @@ const NouveauDepartementPV = () => {
         Retour
       </Link>
       <h1 className="grey-text">Nouveau Département</h1>
-      <form className="col s12 m12 lg12">
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="name" type="text" class="validate" />
-            <label for="first_name">Nom</label>
-          </div>
-          <div class="input-field col s12">
-            <input id="last_name" type="text" class="validate" />
-            <label for="description">Description</label>
+      <form onSubmit={props.submit} className="col s12 m12 lg12">
+        <div className="row">
+          <div className="input-field col s12">
+            <input id="name" type="text" className="validate" />
+            <label htmlFor="name">Nom</label>
           </div>
           <div className="row">
             <input

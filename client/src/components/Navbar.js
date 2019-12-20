@@ -46,7 +46,7 @@ class Navbar extends Component {
             </Link>
           </li>
           <li>
-            <Link to="/typeactivites">
+            <Link to="/typesactivites">
               <i className="fa fa-question-circle"></i> Types d'Activité
             </Link>
           </li>

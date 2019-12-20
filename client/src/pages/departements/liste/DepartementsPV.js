@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const ModulesPV = () => {
+const DepartementsPV = ({departementItems}) => {
   return (
     <div className="col s12">
       <div className="row linecenter">
@@ -11,7 +11,7 @@ const ModulesPV = () => {
         <div className="col s4">
           <Link
             to="/departements/add"
-            class="waves-effect waves-light btn-large left blue"
+            className="waves-effect waves-light btn-large left blue"
           >
             Ajouter un Département
           </Link>
@@ -22,47 +22,11 @@ const ModulesPV = () => {
         <thead>
           <tr>
             <th>Nom</th>
-            <th>Description</th>
             <th>Action</th>
           </tr>
         </thead>
 
-        <tbody>
-          <tr>
-            <td>ESMTIC</td>
-            <td>ESMT Technologies de L'Information et de la Communication</td>
-            <td>
-              <Link to="/departements/id">
-                <div
-                  style={{marginRight: 3}}
-                  className=" waves-effects waves-light btn-small green"
-                >
-                  <i class="fas fa-edit"></i> Modifier
-                </div>
-              </Link>
-              <div className=" waves-effects waves-light btn-small red">
-                <i className="fas fa-trash-alt"></i> Supprimer
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>ESMT Management</td>
-            <td>ESMT Management</td>
-            <td>
-              <Link to="/departements/id">
-                <div
-                  style={{marginRight: 3}}
-                  className=" waves-effects waves-light btn-small green"
-                >
-                  <i class="fas fa-edit"></i> Modifier
-                </div>
-              </Link>
-              <div className=" waves-effects waves-light btn-small red">
-                <i className="fas fa-trash-alt"></i> Supprimer
-              </div>
-            </td>
-          </tr>
-        </tbody>
+        <tbody>{departementItems}</tbody>
       </table>
 
       <div className="fixed-action-btn">
@@ -74,4 +38,4 @@ const ModulesPV = () => {
   );
 };
 
-export default ModulesPV;
+export default DepartementsPV;

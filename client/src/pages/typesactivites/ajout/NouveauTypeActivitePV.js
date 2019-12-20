@@ -5,15 +5,15 @@ const NouveauTypeActivitePV = () => {
   return (
     <div className="container">
       <br />
-      <Link to="/typeactivite" className="btn grey">
+      <Link to="/typesactivites" className="btn grey">
         Retour
       </Link>
-      <h1 className="grey-text">Nouveau Type d'Activité</h1>
+      <h2 className="grey-text">Nouveau Type d'Activité</h2>
       <form className="col s12 m12 lg12">
         <div class="row">
           <div class="input-field col s12">
             <input id="name" type="text" class="validate" />
-            <label for="first_name">Nom</label>
+            <label for="name">Nom</label>
           </div>
           <div className="row">
             <input
