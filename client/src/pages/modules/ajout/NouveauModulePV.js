@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const NouveauModulePV = () => {
+const NouveauModulePV = ({submit}) => {
   return (
     <div className="container">
       <br />
@@ -9,15 +9,15 @@ const NouveauModulePV = () => {
         Retour
       </Link>
       <h1 className="grey-text">Nouveau Module</h1>
-      <form className="col s12 m12 lg12">
+      <form onSubmit={submit} className="col s12 m12 lg12">
         <div class="row">
           <div class="input-field col s12">
-            <input id="first_name" type="text" class="validate" />
-            <label for="first_name">Nom</label>
+            <input id="name" type="text" class="validate" />
+            <label for="name">Nom du Module</label>
           </div>
           <div class="input-field col s12">
-            <input id="last_name" type="text" class="validate" />
-            <label for="last_name">Description</label>
+            <input id="description" type="text" class="validate" />
+            <label for="desctiption">Désignation du Module</label>
           </div>
           <div className="row">
             <input

@@ -7,17 +7,17 @@ class Navbar extends Component {
     return (
       <div>
         <nav className="blue darken-3">
-          <div className="nav-wrapper">
-            <a href="/" className="brand-logo center">
+          <div className="nav-wrapper row">
+            <Link to="/" className="brand-logo center">
               ESMT - GESRA
-            </a>
-            <a
-              href="main-menu"
+            </Link>
+            <Link
+              to="main-menu"
               data-target="main-menu"
               className="sidenav-trigger show-on-large"
             >
               <i className="fa fa-bars"></i> Menu
-            </a>
+            </Link>
             <ul className="right hide-on-small-only">
               <li>Bienvenue Mr Preira</li>
               <li>

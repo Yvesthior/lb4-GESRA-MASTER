@@ -8,7 +8,7 @@ const ModifierDepartementPV = ({item, submit}) => {
       <Link to="/departements" className="btn grey">
         Retour
       </Link>
-      <h2 className="grey-text">Département {item.name}</h2>
+      <h4 className="grey-text">Département {item.name}</h4>
       <form onSubmit={submit} className="col s12 m12 lg12">
         <div className="row">
           <div className="input-field col s12">
@@ -18,7 +18,9 @@ const ModifierDepartementPV = ({item, submit}) => {
               className="validate"
               defaultValue={item.name}
             />
-            <label htmlFor="name">Département</label>
+            <label htmlFor="name" className="active">
+              Département
+            </label>
           </div>
           <div className="row">
             <input

@@ -1,33 +1,37 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const ModifierFilierePV = () => {
+const ModifierFilierePV = ({item, submit}) => {
   return (
     <div className="container">
       <br />
       <Link to="/filieres" className="btn grey">
         Retour
       </Link>
-      <h2 className="grey-text">LPTI 1</h2>
-      <form className="col s12 m12 lg12">
-        <div class="row">
-          <div class="input-field col s12">
+      <h2 className="grey-text">{item.name}</h2>
+      <form onSubmit={submit} className="col s12 m12 lg12">
+        <div className="row">
+          <div className="input-field col s12">
             <input
               id="name"
               type="text"
-              class="validate"
-              defaultValue="LPTI1"
+              className="validate"
+              defaultValue={item.name}
             />
-            <label for="name">Nom</label>
+            <label htmlFor="name" className="active">
+              Nom de la Filière
+            </label>
           </div>
-          <div class="input-field col s12">
+          <div className="input-field col s12">
             <input
               id="description"
               type="text"
-              class="validate"
-              defaultValue="Licence Professionnelle en Téleécommunication et Informatique"
+              className="validate"
+              defaultValue={item.description}
             />
-            <label for="description">Description</label>
+            <label htmlFor="description" className="active">
+              Désignation
+            </label>
           </div>
           <div className="row">
             <input

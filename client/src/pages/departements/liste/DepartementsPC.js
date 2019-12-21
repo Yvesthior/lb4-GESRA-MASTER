@@ -27,7 +27,7 @@ class DepartementsPC extends Component {
   }
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     const departementItems = this.state.departements.map((departement, i) => {
       return <DepartementItem item={departement} key={departement.id} />;
     });

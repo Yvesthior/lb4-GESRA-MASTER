@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const TypesActivitesPV = () => {
+const TypesActivitesPV = ({typeactiviteItems}) => {
   return (
     <div className="col s12">
       <div className="row linecenter">
@@ -14,7 +14,7 @@ const TypesActivitesPV = () => {
         <div className="col s4">
           <Link
             to="/typesactivites/add"
-            class="waves-effect waves-light btn-large left blue"
+            className="waves-effect waves-light btn-large left blue"
           >
             Ajouter un Type D'Activité
           </Link>
@@ -29,40 +29,7 @@ const TypesActivitesPV = () => {
           </tr>
         </thead>
 
-        <tbody>
-          <tr>
-            <td>Formation Initiale</td>
-            <td>
-              <Link to="/typesactivites/id">
-                <div
-                  style={{marginRight: 3}}
-                  className=" waves-effects waves-light btn-small green"
-                >
-                  <i class="fas fa-edit"></i> Modifier
-                </div>
-              </Link>
-              <div className=" waves-effects waves-light btn-small red">
-                <i className="fas fa-trash-alt"></i> Supprimer
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>Cours du Soir</td>
-            <td>
-              <Link to="/typesactivites/id">
-                <div
-                  style={{marginRight: 3}}
-                  className=" waves-effects waves-light btn-small green"
-                >
-                  <i class="fas fa-edit"></i> Modifier
-                </div>
-              </Link>
-              <div className=" waves-effects waves-light btn-small red">
-                <i className="fas fa-trash-alt"></i> Supprimer
-              </div>
-            </td>
-          </tr>
-        </tbody>
+        <tbody>{typeactiviteItems}</tbody>
       </table>
 
       <div className="fixed-action-btn">

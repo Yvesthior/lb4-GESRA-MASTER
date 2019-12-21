@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const ModulesPV = () => {
+const ModulesPV = ({moduleItems}) => {
   return (
     <div className="col s12">
       <div className="row linecenter">
@@ -11,7 +11,7 @@ const ModulesPV = () => {
         <div className="col s4">
           <Link
             to="/modules/add"
-            class="waves-effect waves-light btn-large left blue"
+            className="waves-effect waves-light btn-large left blue"
           >
             Ajouter un Module
           </Link>
@@ -22,64 +22,12 @@ const ModulesPV = () => {
         <thead>
           <tr>
             <th>Nom</th>
-            <th>Description</th>
+            <th>Désignation</th>
             <th>Action</th>
           </tr>
         </thead>
 
-        <tbody>
-          <tr>
-            <td>PHP</td>
-            <td>PHP</td>
-            <td>
-              <Link to="/modules/id">
-                <div
-                  style={{marginRight: 3}}
-                  className=" waves-effects waves-light btn-small green"
-                >
-                  <i class="fas fa-edit"></i> Modifier
-                </div>
-              </Link>
-              <div className=" waves-effects waves-light btn-small red">
-                <i className="fas fa-trash-alt"></i> Supprimer
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>Javascript</td>
-            <td>Javascript</td>
-            <td>
-              <Link to="/modules/id">
-                <div
-                  style={{marginRight: 3}}
-                  className=" waves-effects waves-light btn-small green"
-                >
-                  <i class="fas fa-edit"></i> Modifier
-                </div>
-              </Link>
-              <div className=" waves-effects waves-light btn-small red">
-                <i className="fas fa-trash-alt"></i> Supprimer
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>PO</td>
-            <td>Physique des Ondes Electromagnétiques</td>
-            <td>
-              <Link to="/modules/id">
-                <div
-                  style={{marginRight: 3}}
-                  className=" waves-effects waves-light btn-small green"
-                >
-                  <i class="fas fa-edit"></i> Modifier
-                </div>
-              </Link>
-              <div className=" waves-effects waves-light btn-small red">
-                <i className="fas fa-trash-alt"></i> Supprimer
-              </div>
-            </td>
-          </tr>
-        </tbody>
+        <tbody>{moduleItems}</tbody>
       </table>
 
       <div className="fixed-action-btn">

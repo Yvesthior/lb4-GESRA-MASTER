@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const NouveauTypeActivitePV = () => {
+const NouveauTypeActivitePV = ({submit}) => {
   return (
     <div className="container">
       <br />
@@ -9,11 +9,11 @@ const NouveauTypeActivitePV = () => {
         Retour
       </Link>
       <h2 className="grey-text">Nouveau Type d'Activité</h2>
-      <form className="col s12 m12 lg12">
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="name" type="text" class="validate" />
-            <label for="name">Nom</label>
+      <form onSubmit={submit} className="col s12 m12 lg12">
+        <div className="row">
+          <div className="input-field col s12">
+            <input id="name" type="text" className="validate" />
+            <label for="name">Type d'Activité</label>
           </div>
           <div className="row">
             <input

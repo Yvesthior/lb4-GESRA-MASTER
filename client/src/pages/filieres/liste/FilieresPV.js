@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const FilieresPV = () => {
+const FilieresPV = ({filiereItems}) => {
   return (
     <div className="col s12">
       <div className="row linecenter">
@@ -11,7 +11,7 @@ const FilieresPV = () => {
         <div className="col s4">
           <Link
             to="/filieres/add"
-            class="waves-effect waves-light btn-large left blue"
+            className="waves-effect waves-light btn-large left blue"
           >
             Ajouter une Filière
           </Link>
@@ -22,51 +22,12 @@ const FilieresPV = () => {
         <thead>
           <tr>
             <th>Nom</th>
-            <th>Description</th>
+            <th>Designation</th>
             <th>Action</th>
           </tr>
         </thead>
 
-        <tbody>
-          <tr>
-            <td>LPTI 1</td>
-            <td>
-              Licence Professionnelle en Télécommunications et Informatique
-            </td>
-            <td>
-              <Link to="/filieres/id">
-                <div
-                  style={{marginRight: 3}}
-                  className=" waves-effects waves-light btn-small green"
-                >
-                  <i class="fas fa-edit"></i> Modifier
-                </div>
-              </Link>
-              <div className=" waves-effects waves-light btn-small red">
-                <i className="fas fa-trash-alt"></i> Supprimer
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>LIPMEN 1</td>
-            <td>
-              Licence Professionnelle en Management et Économie du Numérique
-            </td>
-            <td>
-              <Link to="/filieres/id">
-                <div
-                  style={{marginRight: 3}}
-                  className=" waves-effects waves-light btn-small green"
-                >
-                  <i class="fas fa-edit"></i> Modifier
-                </div>
-              </Link>
-              <div className=" waves-effects waves-light btn-small red">
-                <i className="fas fa-trash-alt"></i> Supprimer
-              </div>
-            </td>
-          </tr>
-        </tbody>
+        <tbody>{filiereItems}</tbody>
       </table>
 
       <div className="fixed-action-btn">
