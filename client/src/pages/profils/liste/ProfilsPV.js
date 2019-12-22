@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const ProfilsPV = () => {
+const ProfilsPV = ({profilItems}) => {
   return (
     <div className="col s12">
       <div className="row linecenter">
@@ -11,7 +11,7 @@ const ProfilsPV = () => {
         <div className="col s4">
           <Link
             to="/profils/add"
-            class="waves-effect waves-light btn-large left blue"
+            className="waves-effect waves-light btn-large left blue"
           >
             Ajouter un Profil
           </Link>
@@ -29,30 +29,7 @@ const ProfilsPV = () => {
           </tr>
         </thead>
 
-        <tbody>
-          <tr>
-            <td>Preira</td>
-            <td>Jean Marie </td>
-            <td>jmpreira@gmail.com</td>
-            <td>ESMT TIC</td>
-            <td>
-              <div className=" waves-effects waves-light btn-small red">
-                <i className="fas fa-trash-alt"></i> Supprimer
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>Ndiaye</td>
-            <td>Oumar</td>
-            <td>ndiayeoumar@gmail.com</td>
-            <td>ESMT</td>
-            <td>
-              <div className=" waves-effects waves-light btn-small red">
-                <i className="fas fa-trash-alt"></i> Supprimer
-              </div>
-            </td>
-          </tr>
-        </tbody>
+        <tbody>{profilItems}</tbody>
       </table>
 
       <div className="fixed-action-btn">

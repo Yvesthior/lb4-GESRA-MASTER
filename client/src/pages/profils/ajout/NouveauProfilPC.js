@@ -4,16 +4,16 @@ import NouveauProfilPV from './NouveauProfilPV';
 
 class NouvelEnseignantPC extends Component {
   state = {};
-  addFiliere = newFiliere => {
+  addUser = newUser => {
     axios
       .request({
         method: 'post',
-        url: 'http://localhost:4000/filieres',
-        data: newFiliere,
+        url: 'http://localhost:4000/users',
+        data: newUser,
       })
       .then(response => {
         console.log(response);
-        this.props.history.push('/filieres');
+        this.props.history.push('/profils');
       })
       .catch(err => console.log(err));
   };
@@ -21,13 +21,16 @@ class NouvelEnseignantPC extends Component {
   onSubmit = e => {
     console.log(e.target.name.value);
 
-    const newFiliere = {
-      name: e.target.name.value,
-      description: e.target.description.value,
+    const newUser = {
+      firstName: e.target.first_name.value,
+      lastName: e.target.last_name.value,
+      email: e.target.email.value,
+      password: e.target.email.value,
+      type: parseInt(e.target.type.value),
+      departementId: parseInt(e.target.departement.value),
     };
-
     try {
-      this.addFiliere(newFiliere);
+      this.addUser(newUser);
     } catch (err) {
       console.log(err.message);
     }
