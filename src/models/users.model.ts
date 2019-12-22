@@ -1,4 +1,10 @@
-import {Entity, model, property, belongsTo, hasMany} from '@loopback/repository';
+import {
+  Entity,
+  model,
+  property,
+  belongsTo,
+  hasMany,
+} from '@loopback/repository';
 import {Departement} from './departement.model';
 import {Activite} from './activite.model';
 
@@ -20,7 +26,7 @@ export class Users extends Entity {
   @property({
     type: 'string',
   })
-  lastname?: string;
+  lastName?: string;
 
   @property({
     type: 'string',

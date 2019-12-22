@@ -3,7 +3,7 @@ import axios from 'axios';
 import FilieresPV from './FilieresPV';
 import FiliereItem from './FiliereItem';
 
-class DepartementsPC extends Component {
+class FilieresPC extends Component {
   constructor() {
     super();
     this.state = {
@@ -37,4 +37,4 @@ class DepartementsPC extends Component {
   }
 }
 
-export default DepartementsPC;
+export default FilieresPC;

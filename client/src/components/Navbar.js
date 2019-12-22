@@ -51,6 +51,11 @@ class Navbar extends Component {
             </Link>
           </li>
           <li>
+            <Link to="/profils">
+              <i className="fa fa-question-circle"></i> Profils
+            </Link>
+          </li>
+          <li>
             <Link to="/reglages">
               <i className="fa fa-question-circle"></i> Réglages
             </Link>

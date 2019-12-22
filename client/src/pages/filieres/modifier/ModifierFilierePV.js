@@ -33,12 +33,15 @@ const ModifierFilierePV = ({item, submit}) => {
               Désignation
             </label>
           </div>
-          <div className="row">
-            <input
+          <div className="center">
+            <button
+              className="btn waves-effect waves-light"
               type="submit"
-              value="Modifier"
-              className="btn col s3 offset-s5"
-            />
+              name="action"
+            >
+              <i className="fas fa-edit"></i>
+              Modifier
+            </button>
           </div>
         </div>
       </form>

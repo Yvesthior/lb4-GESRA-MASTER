@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const EnseignantsPV = () => {
+const ProfilsPV = () => {
   return (
     <div className="col s12">
       <div className="row linecenter">
@@ -10,7 +10,7 @@ const EnseignantsPV = () => {
         </div>
         <div className="col s4">
           <Link
-            to="/enseignants/add"
+            to="/profils/add"
             class="waves-effect waves-light btn-large left blue"
           >
             Ajouter un Profil
@@ -22,6 +22,7 @@ const EnseignantsPV = () => {
         <thead>
           <tr>
             <th>Nom</th>
+            <th>Prénom</th>
             <th>Email</th>
             <th>Département</th>
             <th>Action</th>
@@ -30,7 +31,8 @@ const EnseignantsPV = () => {
 
         <tbody>
           <tr>
-            <td>Jean Marie Preira</td>
+            <td>Preira</td>
+            <td>Jean Marie </td>
             <td>jmpreira@gmail.com</td>
             <td>ESMT TIC</td>
             <td>
@@ -40,19 +42,10 @@ const EnseignantsPV = () => {
             </td>
           </tr>
           <tr>
-            <td>Oumar Ndiaye</td>
+            <td>Ndiaye</td>
+            <td>Oumar</td>
             <td>ndiayeoumar@gmail.com</td>
             <td>ESMT</td>
-            <td>
-              <div className=" waves-effects waves-light btn-small red">
-                <i className="fas fa-trash-alt"></i> Supprimer
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>Andre Onana</td>
-            <td>onanaandre@gmail.com</td>
-            <td>ESMT Management</td>
             <td>
               <div className=" waves-effects waves-light btn-small red">
                 <i className="fas fa-trash-alt"></i> Supprimer
@@ -63,7 +56,7 @@ const EnseignantsPV = () => {
       </table>
 
       <div className="fixed-action-btn">
-        <Link to="/enseignants/add" className="btn-floating btn-large blue">
+        <Link to="/profils/add" className="btn-floating btn-large blue">
           <i className="fa fa-plus"></i>
         </Link>
       </div>
@@ -71,4 +64,4 @@ const EnseignantsPV = () => {
   );
 };
 
-export default EnseignantsPV;
+export default ProfilsPV;
