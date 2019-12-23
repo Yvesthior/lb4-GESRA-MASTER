@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import ModifierProfilPV from './ModifierProfilPV';
+import ModifierActivitePV from './ModifierActivitePV';
 
-class ModifierProfilPC extends Component {
+class ModifierActivitePC extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -126,7 +126,7 @@ class ModifierProfilPC extends Component {
 
     return (
       <div>
-        <ModifierProfilPV
+        <ModifierActivitePV
           departementsItems={departementsItems}
           item={this.state}
           type={type}
@@ -137,4 +137,4 @@ class ModifierProfilPC extends Component {
   }
 }
 
-export default ModifierProfilPC;
+export default ModifierActivitePC;

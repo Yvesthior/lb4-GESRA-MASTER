@@ -31,6 +31,11 @@ class Navbar extends Component {
 
         <ul className="sidenav" id="main-menu">
           <li>
+            <Link to="/activites">
+              <i className="fa fa-users"></i> Activités
+            </Link>
+          </li>
+          <li>
             <Link to="/modules">
               <i className="fa fa-users"></i> Modules
             </Link>

@@ -9,6 +9,7 @@ import {RestApplication} from '@loopback/rest';
 import {ServiceMixin} from '@loopback/service-proxy';
 import path from 'path';
 import {MySequence} from './sequence';
+import {AuthenticationComponent} from '@loopback/authentication';
 
 export class GesraApplication extends BootMixin(
   ServiceMixin(RepositoryMixin(RestApplication)),
@@ -27,6 +28,9 @@ export class GesraApplication extends BootMixin(
       path: '/explorer',
     });
     this.component(RestExplorerComponent);
+
+    //Binding Authentication Components attributes
+    this.component(AuthenticationComponent);
 
     this.projectRoot = __dirname;
     // Customize @loopback/boot Booter Conventions here

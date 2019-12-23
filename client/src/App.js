@@ -2,6 +2,10 @@ import React, {Fragment} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Login from './pages/login/LoginPC.js';
+import Activites from './pages/activites/liste/ActivitesPC';
+import ActiviteDetails from './pages/activites/liste/ActiviteDetailsPC';
+import NouvelleActivite from './pages/activites/ajout/NouvelleActivitePC';
+import ModifierActivite from './pages/activites/modifier/ModifierActivitePC';
 import Profils from './pages/profils/liste/ProfilsPC';
 import NouveauProfil from './pages/profils/ajout/NouveauProfilPC';
 import ModifierProfil from './pages/profils/modifier/ModifierProfilPC';
@@ -27,6 +31,14 @@ function App() {
         <Route exact path="/" component={Login} />
         <section className="container">
           <Switch>
+            <Route exact path="/activites" component={Activites} />
+            <Route exact path="/activites/add" component={NouvelleActivite} />
+            <Route exact path="/activites/:id" component={ActiviteDetails} />
+            <Route
+              exact
+              path="/activites/:id/edit"
+              component={ModifierActivite}
+            />
             <Route exact path="/profils" component={Profils} />
             <Route exact path="/profils/add" component={NouveauProfil} />
             <Route exact path="/profils/:id" component={ModifierProfil} />

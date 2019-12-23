@@ -33,7 +33,7 @@ const LoginPV = () => {
             </label>
           </div>
           <Link
-            to="/enseignants"
+            to="/profils"
             className="col s12 btn waves-effect waves-green btn btn-large m-md blue"
           >
             Login

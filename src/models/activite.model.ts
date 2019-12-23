@@ -13,13 +13,13 @@ export class Activite extends Entity {
   id?: number;
 
   @property({
-    type: 'date',
+    type: 'string',
     required: true,
   })
   date_debut: string;
 
   @property({
-    type: 'date',
+    type: 'string',
   })
   date_fin?: string;
 

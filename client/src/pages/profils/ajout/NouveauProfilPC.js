@@ -2,8 +2,28 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import NouveauProfilPV from './NouveauProfilPV';
 
-class NouvelEnseignantPC extends Component {
-  state = {};
+class NouveauProfilPC extends Component {
+  state = {
+    departements: [],
+  };
+
+  UNSAFE_componentWillMount() {
+    this.getDepartement();
+  }
+
+  getDepartement = () => {
+    axios
+      .get(`http://localhost:4000/departements`)
+      .then(response => {
+        this.setState(
+          {
+            departements: response.data,
+          },
+          () => console.log(this.state),
+        );
+      })
+      .catch(err => console.log(err));
+  };
   addUser = newUser => {
     axios
       .request({
@@ -37,8 +57,20 @@ class NouvelEnseignantPC extends Component {
     e.preventDefault();
   };
   render() {
-    return <NouveauProfilPV submit={this.onSubmit} />;
+    let departementsItems = this.state.departements.map((item, i) => {
+      return (
+        <option value={`${item.id}`} key={item.id}>
+          {item.name}
+        </option>
+      );
+    });
+    return (
+      <NouveauProfilPV
+        departementsItems={departementsItems}
+        submit={this.onSubmit}
+      />
+    );
   }
 }
 
-export default NouvelEnseignantPC;
+export default NouveauProfilPC;

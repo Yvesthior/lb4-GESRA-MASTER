@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const NouvelEnseignantPV = ({submit}) => {
+const NouveauProfilPV = ({submit, departementsItems}) => {
   return (
     <div className="container">
       <br />
@@ -28,9 +28,7 @@ const NouvelEnseignantPV = ({submit}) => {
             <option value="" disabled defaultValue>
               --votre choix--
             </option>
-            <option value="1">Département 1</option>
-            <option value="2">Département 2</option>
-            <option value="3">Département 3</option>
+            {departementsItems}
           </select>
           <label>Type</label>
           <select id="type" className="browser-default">
@@ -54,4 +52,4 @@ const NouvelEnseignantPV = ({submit}) => {
   );
 };
 
-export default NouvelEnseignantPV;
+export default NouveauProfilPV;
