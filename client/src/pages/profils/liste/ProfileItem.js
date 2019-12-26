@@ -51,6 +51,14 @@ class ProfileItem extends Component {
               style={{marginRight: 3}}
               className=" waves-effects waves-light btn-small green"
             >
+              <i className="fas fa-eye"></i> Profil
+            </div>
+          </Link>
+          <Link to={`/profils/${this.state.item.id}`}>
+            <div
+              style={{marginRight: 3}}
+              className=" waves-effects waves-light btn-small green"
+            >
               <i className="fas fa-edit"></i> Modifier
             </div>
           </Link>

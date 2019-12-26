@@ -61,6 +61,11 @@ class Navbar extends Component {
             </Link>
           </li>
           <li>
+            <Link to="/profils/4/activites">
+              <i className="fa fa-question-circle"></i> Mes Activités
+            </Link>
+          </li>
+          <li>
             <Link to="/reglages">
               <i className="fa fa-question-circle"></i> Réglages
             </Link>

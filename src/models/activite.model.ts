@@ -48,6 +48,12 @@ export class Activite extends Entity {
   })
   usersId?: number;
 
+  @property({
+    type: 'number',
+    default: 1,
+  })
+  status?: number;
+
   constructor(data?: Partial<Activite>) {
     super(data);
   }

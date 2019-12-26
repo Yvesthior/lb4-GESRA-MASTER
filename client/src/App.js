@@ -6,7 +6,10 @@ import Activites from './pages/activites/liste/ActivitesPC';
 import ActiviteDetails from './pages/activites/liste/ActiviteDetailsPC';
 import NouvelleActivite from './pages/activites/ajout/NouvelleActivitePC';
 import ModifierActivite from './pages/activites/modifier/ModifierActivitePC';
+import MesActivites from './pages/mesactivites/MesActivitesPC';
+import MesActivitesDetails from './pages/mesactivites/MesActivitesDetailsPC';
 import Profils from './pages/profils/liste/ProfilsPC';
+import ProfilDetails from './pages/profils/liste/ProfileDetailsPC';
 import NouveauProfil from './pages/profils/ajout/NouveauProfilPC';
 import ModifierProfil from './pages/profils/modifier/ModifierProfilPC';
 import Modules from './pages/modules/liste/ModulesPC';
@@ -22,6 +25,7 @@ import TypesActivites from './pages/typesactivites/liste/TypesActivitesPC';
 import NouveauTypeActivite from './pages/typesactivites/ajout/NouveauTypeActivitePC';
 import ModifierTypeActivite from './pages/typesactivites/modifier/ModifierTypeActivitePC';
 import Reglages from './pages/reglages/ReglagesPC';
+import RapportPC from './pages/rapports/RapportPC';
 
 function App() {
   return (
@@ -31,6 +35,11 @@ function App() {
         <Route exact path="/" component={Login} />
         <section className="container">
           <Switch>
+            <Route
+              exact
+              path="/profils/:id/activites/:id"
+              component={MesActivitesDetails}
+            />
             <Route exact path="/activites" component={Activites} />
             <Route exact path="/activites/add" component={NouvelleActivite} />
             <Route exact path="/activites/:id" component={ActiviteDetails} />
@@ -39,9 +48,19 @@ function App() {
               path="/activites/:id/edit"
               component={ModifierActivite}
             />
+
+            <Route
+              exact
+              path="/profils/:id/activites"
+              component={MesActivites}
+            />
+
             <Route exact path="/profils" component={Profils} />
             <Route exact path="/profils/add" component={NouveauProfil} />
-            <Route exact path="/profils/:id" component={ModifierProfil} />
+
+            <Route exact path="/profils/:id" component={ProfilDetails} />
+            <Route exact path="/profils/:id/edit" component={ModifierProfil} />
+            <Route exact path="/profils/:id/rapport" component={RapportPC} />
             <Route exact path="/modules" component={Modules} />
             <Route exact path="/modules/add" component={NouveauModule} />
             <Route exact path="/modules/:id" component={ModifierModulePC} />

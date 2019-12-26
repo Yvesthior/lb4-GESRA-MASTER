@@ -6,81 +6,104 @@ class ModifierActivitePC extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: '',
-      firstName: '',
-      lastName: '',
-      email: '',
-      type: '',
-      departement: '',
-      departementName: '',
-      departements: [],
+      typesActivite: [],
+      filieres: [],
+      users: [],
+      modules: [],
+      activite: [],
+      user: '',
+      filiere: '',
+      module: '',
+      typeActivite: '',
     };
   }
   UNSAFE_componentWillMount() {
-    this.getProfileDetails();
-    this.getDepartement();
-    this.getDepartements();
+    this.getData();
+    this.getActiviteDetails();
   }
 
-  getDepartements = () => {
-    axios
-      .get(`http://localhost:4000/departements`)
-      .then(response => {
-        this.setState(
-          {
-            departements: response.data,
-          },
-          () => console.log(this.state),
-        );
-      })
-      .catch(err => console.log(err));
-  };
+  getData = () => {
+    const users = axios.get('http://localhost:4000/users');
+    const filieres = axios.get('http://localhost:4000/filieres');
+    const modules = axios.get('http://localhost:4000/modules');
+    const typesActivite = axios.get('http://localhost:4000/type-activites');
 
-  getProfileDetails() {
-    let profileId = this.props.match.params.id;
     axios
-      .get(`http://localhost:4000/users/${profileId}`)
+      .all([users, filieres, modules, typesActivite])
+      .then(
+        axios.spread((...responses) => {
+          this.setState({
+            users: responses[0].data,
+            filieres: responses[1].data,
+            modules: responses[2].data,
+            typesActivite: responses[3].data,
+          });
+        }),
+      )
+      .catch(errors => {
+        // react on errors
+        console.error(errors.message);
+      });
+  };
+  getActiviteDetails() {
+    let activiteId = this.props.match.params.id;
+    axios
+      .get(`http://localhost:4000/activites/${activiteId}`)
       .then(response => {
         this.setState(
           {
-            id: response.data.id,
-            firstName: response.data.firstName,
-            lastName: response.data.lastName,
-            email: response.data.email,
-            type: response.data.type,
-            departement: response.data.departementId,
+            activite: response.data,
           },
-          () => console.log(this.state),
+          () => {
+            console.log(this.state.activite);
+            this.getActivite();
+          },
         );
       })
       .catch(err => console.log(err));
   }
-
-  getDepartement = () => {
-    // let departement = this.state.item.departementId;
-    let userId = this.props.match.params.id;
+  getActivite() {
+    let activiteId = this.props.match.params.id;
+    let userId = this.state.activite.usersId;
+    const filiere = axios.get(
+      `http://localhost:4000/activites/${activiteId}/filiere`,
+    );
+    const module = axios.get(
+      `http://localhost:4000/activites/${activiteId}/module`,
+    );
+    const typeactivite = axios.get(
+      `http://localhost:4000/activites/${activiteId}/type-activites`,
+    );
+    const user = axios.get(`http://localhost:4000/users/${userId}`);
 
     axios
-      .get(`http://localhost:4000/users/${userId}/departement`)
-      .then(response => {
-        this.setState(
-          {
-            departementName: response.data.name,
-          },
-          () => console.log(this.state),
-        );
-      })
-      .catch(err => console.log(err));
-  };
-  editProfile = newProfile => {
+      .all([user, filiere, module, typeactivite])
+      .then(
+        axios.spread((...responses) => {
+          let name = ` ${responses[0].data.lastName} ${responses[0].data.firstName}`;
+          this.setState({
+            user: name,
+            filiere: responses[1].data.name,
+            module: responses[2].data.name,
+            typeActivite: responses[3].data.name,
+          });
+        }),
+      )
+      .catch(errors => {
+        // react on errors
+        console.error(errors.message);
+      });
+  }
+
+  editActivite = newActivite => {
     axios
       .request({
         method: 'put',
-        url: `http://localhost:4000/users/${this.state.id}`,
-        data: newProfile,
+        url: `http://localhost:4000/activites/${this.state.activite.id}`,
+        data: newActivite,
       })
       .then(response => {
-        this.props.history.push('/profils');
+        this.props.history.push('/activites');
       })
       .catch(err => console.log(err));
   };
@@ -88,16 +111,18 @@ class ModifierActivitePC extends Component {
   onSubmit = e => {
     console.log(e.target.name.value);
 
-    const newProfile = {
-      firstName: e.target.first_name.value,
-      lastName: e.target.last_name.value,
-      email: e.target.email.value,
-      type: parseInt(e.target.type.value),
-      departementId: parseInt(e.target.departement.value),
+    const newActivite = {
+      date_debut: e.target.date_debut.value.toString(),
+      date_fin: e.target.date_fin.value.toString(),
+      volumeHoraire: parseInt(e.target.volumeHoraire.value),
+      commentaires: e.target.commentaire.value,
+      moduleId: parseInt(e.target.module.value),
+      typeActivitesId: parseInt(e.target.typeActivite.value),
+      filiereId: parseInt(e.target.filiere.value),
+      usersId: parseInt(e.target.user.value),
     };
-
     try {
-      this.editProfile(newProfile);
+      this.editActivite(newActivite);
     } catch (err) {
       console.log(err.message);
     }
@@ -105,31 +130,47 @@ class ModifierActivitePC extends Component {
   };
 
   render() {
-    let type = this.state.type;
-    if (type === 1) {
-      type = 'Enseignant';
-    }
-
-    if (type === 2) {
-      type = 'Chef de Département';
-    }
-    if (type === 3) {
-      type = 'Administrateur';
-    }
-    let departementsItems = this.state.departements.map((item, i) => {
+    let filiereItems = this.state.filieres.map((item, i) => {
       return (
         <option value={`${item.id}`} key={item.id}>
           {item.name}
         </option>
       );
     });
-
+    let moduleItems = this.state.modules.map((item, i) => {
+      return (
+        <option value={`${item.id}`} key={item.id}>
+          {item.name}
+        </option>
+      );
+    });
+    let usersItems = this.state.users.map((item, i) => {
+      return (
+        <option value={`${item.id}`} key={item.id}>
+          {`${item.lastName} ${item.firstName}`}
+        </option>
+      );
+    });
+    let typesActiviteItems = this.state.typesActivite.map((item, i) => {
+      return (
+        <option value={`${item.id}`} key={item.id}>
+          {item.name}
+        </option>
+      );
+    });
+    let {user, filiere, module, typeActivite} = this.state;
     return (
       <div>
         <ModifierActivitePV
-          departementsItems={departementsItems}
-          item={this.state}
-          type={type}
+          user={user}
+          filiere={filiere}
+          module={module}
+          typeActivite={typeActivite}
+          filiereItems={filiereItems}
+          moduleItems={moduleItems}
+          usersItems={usersItems}
+          typesActiviteItems={typesActiviteItems}
+          activite={this.state.activite}
           submit={this.onSubmit}
         />
       </div>

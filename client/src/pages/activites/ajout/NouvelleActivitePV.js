@@ -5,10 +5,10 @@ const NouvelleActivitePV = props => {
   return (
     <div className="container">
       <br />
-      <Link to="/profils" className="btn grey">
+      <Link to="/activites" className="btn grey">
         Retour
       </Link>
-      <h3 className="grey-text">Nouveau Profil</h3>
+      <h3 className="grey-text">Nouvelle Activité</h3>
       <form onSubmit={props.submit} className="col s12 m12 lg12">
         <div className="row">
           <div className="input-field col s12">

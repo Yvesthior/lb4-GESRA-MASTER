@@ -1,68 +1,93 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const ModifierProfilPV = ({item, submit, type, departementsItems}) => {
+const ModifierProfilPV = props => {
   return (
     <div className="container">
       <br />
-      <Link to="/profils" className="btn grey">
+      <Link to="/activites" className="btn grey">
         Retour
       </Link>
-      <h3 className="grey-text">Modifier le Profil</h3>
-      <form onSubmit={submit} className="col s12 m12 lg12">
+      <h3 className="grey-text">Modifier l'Activité</h3>
+      <form onSubmit={props.submit} className="col s12 m12 lg12">
         <div className="row">
           <div className="input-field col s12">
             <input
-              id="first_name"
-              type="text"
+              id="date_debut"
+              type="date"
               className="validate"
-              defaultValue={item.firstName}
+              defaultValue={props.activite.date_debut}
             />
-            <label htmlFor="first_name" className="active">
-              Nom
+            <label htmlFor="date_debut" className="active">
+              Date de Démarrage
             </label>
           </div>
           <div className="input-field col s12">
             <input
-              id="last_name"
-              type="text"
+              id="date_fin"
+              type="date"
               className="validate"
-              defaultValue={item.lastName}
+              defaultValue={props.activite.date_fin}
             />
-            <label htmlFor="last_name" className="active">
-              Prénom
+            <label htmlFor="date-fin" className="active">
+              Date Prévue de fin
             </label>
           </div>
           <div className="input-field col s12">
             <input
-              id="email"
-              type="email"
+              id="commentaire"
+              type="text"
               className="validate"
-              defaultValue={item.email}
+              defaultValue={props.activite.commentaires}
             />
-            <label htmlFor="email" className="active">
-              Email
+            <label htmlFor="commentaire" className="active">
+              Commentaire
             </label>
           </div>
-          <label>Département</label>
-          <select id="departement" className="browser-default">
-            <option value={`${item.departement}`}>
-              {item.departementName}
+          <div className="input-field col s12">
+            <input
+              id="volumeHoraire"
+              type="number"
+              className="validate"
+              defaultValue={props.activite.volumeHoraire}
+            />
+            <label htmlFor="volumeHoraire" className="active">
+              Volume Horaire
+            </label>
+          </div>
+          <br />
+          <label>Enseignant</label>
+          <select id="user" className="browser-default">
+            <option value={`${props.activite.usersId}`}>{props.user} </option>
+            {props.usersItems}
+          </select>
+          <br />
+          <label>Filière</label>
+          <select id="filiere" className="browser-default">
+            <option value={`${props.activite.filiereId}`}>
+              {props.filiere}
             </option>
-            {departementsItems}
+            {props.filiereItems}
           </select>
-          <label>Type</label>
-          <select id="type" className="browser-default">
-            <option value={`${item.type}`}>{type}</option>
-            <option value="1">Enseignant</option>
-            <option value="2">Chef de Département</option>
-            <option value="3">Administrateur</option>
+          <br />
+          <label>Module</label>
+          <select id="module" className="browser-default">
+            <option value={`${props.activite.moduleId}`}>{props.module}</option>
+            {props.moduleItems}
           </select>
-
+          <br />
+          <label>Type d'Activité</label>
+          <select id="typeActivite" className="browser-default">
+            <option value={`${props.activite.typeActivitesId}`}>
+              {props.typeActivite}
+            </option>
+            {props.typesActiviteItems}
+          </select>
+          <br />
           <div className="row">
             <input
               type="submit"
-              value="Modifier"
+              value="Enregistrer"
               className="btn col s3 offset-s5"
             />
           </div>

@@ -26,7 +26,7 @@ class ActivitesPC extends Component {
       .catch(err => console.log(err));
   }
   render() {
-    const activiteItems = this.state.users.map((activite, i) => {
+    const activiteItems = this.state.activites.map((activite, i) => {
       return <ActiviteItem item={activite} key={activite.id} />;
     });
     return <Activites activiteItems={activiteItems} />;
