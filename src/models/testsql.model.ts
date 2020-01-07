@@ -1,10 +1,11 @@
 import {Entity, model, property} from '@loopback/repository';
 
-@model({settings: {}})
-export class Department extends Entity {
+@model()
+export class Testsql extends Entity {
   @property({
     type: 'number',
     id: true,
+    generated: false,
   })
   id?: number;
 
@@ -14,14 +15,19 @@ export class Department extends Entity {
   })
   name: string;
 
+  @property({
+    type: 'number',
+  })
+  value?: number;
 
-  constructor(data?: Partial<Department>) {
+
+  constructor(data?: Partial<Testsql>) {
     super(data);
   }
 }
 
-export interface DepartmentRelations {
+export interface TestsqlRelations {
   // describe navigational properties here
 }
 
-export type DepartmentWithRelations = Department & DepartmentRelations;
+export type TestsqlWithRelations = Testsql & TestsqlRelations;

@@ -6,3 +6,4 @@ export * from './users.model';
 export * from './activite.model';
 export * from './dummy.model';
 export * from './dummyee.model';
+export * from './testsql.model';

@@ -10,6 +10,11 @@ import {inject, Getter} from '@loopback/core';
 import {DepartementRepository} from './departement.repository';
 import {ActiviteRepository} from './activite.repository';
 
+export type Credentials = {
+  email: string;
+  password: string;
+};
+
 export class UsersRepository extends DefaultCrudRepository<
   Users,
   typeof Users.prototype.id,

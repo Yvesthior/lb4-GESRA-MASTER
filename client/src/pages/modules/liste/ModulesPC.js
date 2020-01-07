@@ -12,10 +12,10 @@ class ModulesPC extends Component {
   }
 
   UNSAFE_componentWillMount() {
-    this.getFilieres();
+    this.getmodules();
   }
 
-  getFilieres() {
+  getmodules() {
     axios
       .get('http://localhost:4000/modules')
       .then(response => {
@@ -25,15 +25,12 @@ class ModulesPC extends Component {
       })
       .catch(err => console.log(err));
   }
+
   render() {
     const moduleItems = this.state.modules.map((module, i) => {
       return <ModuleItem item={module} key={module.id} />;
     });
-    return (
-      <div>
-        <Modules moduleItems={moduleItems} />
-      </div>
-    );
+    return <Modules moduleItems={moduleItems} />;
   }
 }
 
