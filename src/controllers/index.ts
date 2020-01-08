@@ -9,4 +9,3 @@ export * from './activite-module.controller';
 export * from './activite-type-activites.controller';
 export * from './activite-filiere.controller';
 export * from './users-activite.controller';
-export * from './testsql.controller';
