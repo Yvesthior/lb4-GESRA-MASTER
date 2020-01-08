@@ -3,9 +3,7 @@ import axios from 'axios';
 import NouveauModulePV from './NouveauModulePV';
 
 class NouveauModulePC extends Component {
-  state = {
-    error: '',
-  };
+  state = {};
   addModule = newModule => {
     axios
       .request({
@@ -38,7 +36,6 @@ class NouveauModulePC extends Component {
   render() {
     return (
       <div>
-        {/* {this.state.error ? <Erreur message={this.state.error} /> : ''} */}
         <NouveauModulePV submit={this.onSubmit} />
       </div>
     );

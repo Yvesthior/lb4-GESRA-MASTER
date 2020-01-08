@@ -1,17 +1,9 @@
 import {GesraApplication} from './application';
 import {ApplicationConfig} from '@loopback/core';
-import fs from 'fs';
 
 export {GesraApplication};
 
-export async function main(
-  options: ApplicationConfig = {
-    rest: {
-      protocol: 'https',
-      cert: fs.readFileSync('./cert.pem'),
-    },
-  },
-) {
+export async function main(options: ApplicationConfig = {}) {
   const app = new GesraApplication(options);
   await app.boot();
   await app.start();

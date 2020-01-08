@@ -19,13 +19,11 @@ import {
 } from '@loopback/rest';
 import {Users} from '../models';
 import {UsersRepository} from '../repositories';
-import {validateCredentials} from '../services/validator';
-import * as _ from 'lodash';
 
 export class UsersController {
   constructor(
     @repository(UsersRepository)
-    public usersRepository: UsersRepository,
+    public usersRepository : UsersRepository,
   ) {}
 
   @post('/users', {
@@ -42,17 +40,14 @@ export class UsersController {
         'application/json': {
           schema: getModelSchemaRef(Users, {
             title: 'NewUsers',
+            
           }),
         },
       },
     })
     users: Users,
   ): Promise<Users> {
-    const credentials = _.pick(users, ['email', 'password']);
-    validateCredentials(credentials);
-    const savedUser = this.usersRepository.create(users);
-    delete (await savedUser).password;
-    return savedUser;
+    return this.usersRepository.create(users);
   }
 
   @get('/users/count', {
@@ -85,8 +80,7 @@ export class UsersController {
     },
   })
   async find(
-    @param.query.object('filter', getFilterSchemaFor(Users))
-    filter?: Filter<Users>,
+    @param.query.object('filter', getFilterSchemaFor(Users)) filter?: Filter<Users>,
   ): Promise<Users[]> {
     return this.usersRepository.find(filter);
   }
@@ -127,8 +121,7 @@ export class UsersController {
   })
   async findById(
     @param.path.number('id') id: number,
-    @param.query.object('filter', getFilterSchemaFor(Users))
-    filter?: Filter<Users>,
+    @param.query.object('filter', getFilterSchemaFor(Users)) filter?: Filter<Users>
   ): Promise<Users> {
     return this.usersRepository.findById(id, filter);
   }

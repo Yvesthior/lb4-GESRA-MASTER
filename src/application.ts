@@ -8,21 +8,13 @@ import {RepositoryMixin} from '@loopback/repository';
 import {RestApplication} from '@loopback/rest';
 import {ServiceMixin} from '@loopback/service-proxy';
 import path from 'path';
-import fs from 'fs';
 import {MySequence} from './sequence';
 import {AuthenticationComponent} from '@loopback/authentication';
 
 export class GesraApplication extends BootMixin(
   ServiceMixin(RepositoryMixin(RestApplication)),
 ) {
-  constructor(
-    options: ApplicationConfig = {
-      rest: {
-        protocol: 'https',
-        cert: fs.readFileSync('./src/datasources/mysql-ca.crt'),
-      },
-    },
-  ) {
+  constructor(options: ApplicationConfig = {}) {
     super(options);
 
     // Set up the custom sequence

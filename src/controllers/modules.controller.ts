@@ -23,7 +23,7 @@ import {ModuleRepository} from '../repositories';
 export class ModulesController {
   constructor(
     @repository(ModuleRepository)
-    public moduleRepository: ModuleRepository,
+    public moduleRepository : ModuleRepository,
   ) {}
 
   @post('/modules', {
@@ -40,6 +40,7 @@ export class ModulesController {
         'application/json': {
           schema: getModelSchemaRef(Module, {
             title: 'NewModule',
+            
           }),
         },
       },
@@ -58,8 +59,7 @@ export class ModulesController {
     },
   })
   async count(
-    @param.query.object('where', getWhereSchemaFor(Module))
-    where?: Where<Module>,
+    @param.query.object('where', getWhereSchemaFor(Module)) where?: Where<Module>,
   ): Promise<Count> {
     return this.moduleRepository.count(where);
   }
@@ -80,8 +80,7 @@ export class ModulesController {
     },
   })
   async find(
-    @param.query.object('filter', getFilterSchemaFor(Module))
-    filter?: Filter<Module>,
+    @param.query.object('filter', getFilterSchemaFor(Module)) filter?: Filter<Module>,
   ): Promise<Module[]> {
     return this.moduleRepository.find(filter);
   }
@@ -103,8 +102,7 @@ export class ModulesController {
       },
     })
     module: Module,
-    @param.query.object('where', getWhereSchemaFor(Module))
-    where?: Where<Module>,
+    @param.query.object('where', getWhereSchemaFor(Module)) where?: Where<Module>,
   ): Promise<Count> {
     return this.moduleRepository.updateAll(module, where);
   }
@@ -123,8 +121,7 @@ export class ModulesController {
   })
   async findById(
     @param.path.number('id') id: number,
-    @param.query.object('filter', getFilterSchemaFor(Module))
-    filter?: Filter<Module>,
+    @param.query.object('filter', getFilterSchemaFor(Module)) filter?: Filter<Module>
   ): Promise<Module> {
     return this.moduleRepository.findById(id, filter);
   }

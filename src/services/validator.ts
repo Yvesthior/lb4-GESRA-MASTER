@@ -1,15 +1,15 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as isEmail from 'isemail';
+import {Credentials} from '../repositories/users.repository';
 import {HttpErrors} from '@loopback/rest';
 
-export function validateCredentials(credentials: any) {
+export function validateCredentials(credentials: Credentials) {
   if (!isEmail.validate(credentials.email)) {
     throw new HttpErrors.UnprocessableEntity('invalid Email');
   }
 
   if (credentials.password.length < 8) {
     throw new HttpErrors.UnprocessableEntity(
-      'Password length should be greater than 8',
+      'password length should be greater than 8',
     );
   }
 }
