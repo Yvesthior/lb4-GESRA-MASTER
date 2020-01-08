@@ -30,12 +30,13 @@ export class Users extends Entity {
 
   @property({
     type: 'string',
-    required: 'true',
+    required: true,
   })
   email?: number;
 
   @property({
     type: 'string',
+    required: true,
   })
   password: string;
 

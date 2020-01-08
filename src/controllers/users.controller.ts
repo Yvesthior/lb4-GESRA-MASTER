@@ -19,11 +19,22 @@ import {
 } from '@loopback/rest';
 import {Users} from '../models';
 import {UsersRepository} from '../repositories';
+import * as _ from 'lodash';
+import {validateCredentials} from '../services/validator';
+import {
+  PasswordHasherBindings,
+  UserServiceBindings,
+  TokenServiceBindings,
+} from '../keys';
+import {inject} from '@loopback/core';
+import {BcryptHasher} from '../services/hash.password.bcrypt';
 
 export class UsersController {
   constructor(
     @repository(UsersRepository)
-    public usersRepository : UsersRepository,
+    public usersRepository: UsersRepository,
+    @inject(PasswordHasherBindings.PASSWORD_HASHER)
+    public hasher: BcryptHasher,
   ) {}
 
   @post('/users', {
@@ -40,14 +51,22 @@ export class UsersController {
         'application/json': {
           schema: getModelSchemaRef(Users, {
             title: 'NewUsers',
-            
           }),
         },
       },
     })
     users: Users,
   ): Promise<Users> {
-    return this.usersRepository.create(users);
+    //validate user Credentials
+    const credentials = _.pick(users, ['email', 'password']);
+    validateCredentials(credentials);
+
+    //Hash of password
+    // eslint-disable-next-line require-atomic-updates
+    users.password = await this.hasher.hashPassword(users.password);
+    const savedUser = this.usersRepository.create(users);
+    delete (await savedUser).password;
+    return savedUser;
   }
 
   @get('/users/count', {
@@ -80,7 +99,8 @@ export class UsersController {
     },
   })
   async find(
-    @param.query.object('filter', getFilterSchemaFor(Users)) filter?: Filter<Users>,
+    @param.query.object('filter', getFilterSchemaFor(Users))
+    filter?: Filter<Users>,
   ): Promise<Users[]> {
     return this.usersRepository.find(filter);
   }
@@ -121,7 +141,8 @@ export class UsersController {
   })
   async findById(
     @param.path.number('id') id: number,
-    @param.query.object('filter', getFilterSchemaFor(Users)) filter?: Filter<Users>
+    @param.query.object('filter', getFilterSchemaFor(Users))
+    filter?: Filter<Users>,
   ): Promise<Users> {
     return this.usersRepository.findById(id, filter);
   }

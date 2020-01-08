@@ -1,8 +1,8 @@
 import * as isEmail from 'isemail';
-import {Credentials} from '../repositories/users.repository';
 import {HttpErrors} from '@loopback/rest';
 
-export function validateCredentials(credentials: Credentials) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function validateCredentials(credentials: any) {
   if (!isEmail.validate(credentials.email)) {
     throw new HttpErrors.UnprocessableEntity('invalid Email');
   }
