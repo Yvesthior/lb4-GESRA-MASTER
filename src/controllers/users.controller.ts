@@ -18,7 +18,7 @@ import {
   requestBody,
 } from '@loopback/rest';
 import {Users} from '../models';
-import {UsersRepository} from '../repositories';
+import {UsersRepository, Credentials} from '../repositories';
 import * as _ from 'lodash';
 import {validateCredentials} from '../services/validator';
 import {
@@ -28,6 +28,8 @@ import {
 } from '../keys';
 import {inject} from '@loopback/core';
 import {BcryptHasher} from '../services/hash.password.bcrypt';
+import {CredentialsRequestBody} from './specs/user.controller.spec';
+import {MyUserService} from '../services/user-service';
 
 export class UsersController {
   constructor(
@@ -35,6 +37,8 @@ export class UsersController {
     public usersRepository: UsersRepository,
     @inject(PasswordHasherBindings.PASSWORD_HASHER)
     public hasher: BcryptHasher,
+    @inject('services.user.service')
+    public userService: MyUserService,
   ) {}
 
   @post('/users', {
@@ -67,6 +71,36 @@ export class UsersController {
     const savedUser = this.usersRepository.create(users);
     delete (await savedUser).password;
     return savedUser;
+  }
+
+  @post('users/login', {
+    responses: {
+      '200': {
+        description: 'Token',
+        content: {
+          'application/json': {
+            schema: {
+              type: 'object',
+              properties: {
+                token: {
+                  type: 'string',
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  })
+  async login(
+    @requestBody(CredentialsRequestBody) credentials: Credentials,
+  ): Promise<{token: string}> {
+    //Check user exists, validate password
+    const user = await this.userService.verifyCredentials(credentials);
+    console.log(user);
+
+    await this.userService.verifyCredentials(credentials);
+    return Promise.resolve({token: 'shfsjghfsklhfjgkh343254254354hkjhhjkshfk'});
   }
 
   @get('/users/count', {

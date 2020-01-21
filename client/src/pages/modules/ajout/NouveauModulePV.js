@@ -12,11 +12,11 @@ const NouveauModulePV = ({submit}) => {
       <form onSubmit={submit} className="col s12 m12 lg12">
         <div class="row">
           <div class="input-field col s12">
-            <input id="name" type="text" class="validate" />
+            <input id="name" type="text" class="validate" required />
             <label for="name">Nom du Module</label>
           </div>
           <div class="input-field col s12">
-            <input id="description" type="text" class="validate" />
+            <input id="description" type="text" class="validate" required />
             <label for="desctiption">Désignation du Module</label>
           </div>
           <div className="row">

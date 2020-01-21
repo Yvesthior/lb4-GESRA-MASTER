@@ -17,6 +17,7 @@ import {
   UserServiceBindings,
 } from './keys';
 import {BcryptHasher} from './services/hash.password.bcrypt';
+import {MyUserService} from './services/user-service';
 
 export class GesraApplication extends BootMixin(
   ServiceMixin(RepositoryMixin(RestApplication)),
@@ -55,6 +56,7 @@ export class GesraApplication extends BootMixin(
   }
 
   setupBinding(): void {
+    this.bind('services.user.service').toClass(MyUserService);
     this.bind(PasswordHasherBindings.PASSWORD_HASHER).toClass(BcryptHasher);
     this.bind(PasswordHasherBindings.ROUNDS).to(10);
     // this.bind(UserServiceBindings.USER_SERVICE).toClass(MyUserService);
